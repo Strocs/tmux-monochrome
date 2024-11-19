@@ -8,20 +8,19 @@ fahrenheit=$1
 location=$2
 fixedlocation=$3
 
-DATAFILE=/tmp/.dracula-tmux-data
-LAST_EXEC_FILE="/tmp/.dracula-tmux-weather-last-exec"
+DATAFILE=/tmp/.strocs-tmux-data
+LAST_EXEC_FILE="/tmp/.strocs-tmux-weather-last-exec"
 RUN_EACH=1200
 TIME_NOW=$(date +%s)
 TIME_LAST=$(cat "${LAST_EXEC_FILE}" 2>/dev/null || echo "0")
 
-main()
-{
-  current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+main() {
+  current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
   if [ "$(expr ${TIME_LAST} + ${RUN_EACH})" -lt "${TIME_NOW}" ]; then
     # Run weather script here
-    $current_dir/weather.sh $fahrenheit $location "$fixedlocation" > "${DATAFILE}"
-    echo "${TIME_NOW}" > "${LAST_EXEC_FILE}"
+    $current_dir/weather.sh $fahrenheit $location "$fixedlocation" >"${DATAFILE}"
+    echo "${TIME_NOW}" >"${LAST_EXEC_FILE}"
   fi
 
   cat "${DATAFILE}"

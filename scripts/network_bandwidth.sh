@@ -17,7 +17,7 @@ readonly SIZE=(
 
 # interface_get try to automaticaly get the used interface if network_name is empty
 interface_get() {
-  name="$(tmux show-option -gqv "@dracula-network-bandwidth")"
+  name="$(tmux show-option -gqv "@strocs-network-bandwidth")"
 
   if [[ -z $name ]]; then
     case "$(uname -s)" in
@@ -58,15 +58,15 @@ get_bandwidth() {
   local upload=0
   local download=0
 
-  IFS=' ' read -r upload download <<< "$(interface_bytes "$1")"
+  IFS=' ' read -r upload download <<<"$(interface_bytes "$1")"
 
   # wait for interval to calculate the difference
   sleep "$INTERVAL"
 
-  IFS=' ' read -r new_upload new_download <<< "$(interface_bytes "$1")"
+  IFS=' ' read -r new_upload new_download <<<"$(interface_bytes "$1")"
 
-  upload=$(( $new_upload - $upload ))
-  download=$(( $new_download - $download ))
+  upload=$(($new_upload - $upload))
+  download=$(($new_download - $download))
 
   # set to 0 by default
   echo "${upload:-0} ${download:-0}"
@@ -96,8 +96,8 @@ main() {
   bandwidth=()
 
   network_name=""
-  show_interface="$(tmux show-option -gqv "@dracula-network-bandwidth-show-interface")"
-  interval_update="$(tmux show-option -gqv "@dracula-network-bandwidth-interval")"
+  show_interface="$(tmux show-option -gqv "@strocs-network-bandwidth-show-interface")"
+  interval_update="$(tmux show-option -gqv "@strocs-network-bandwidth-interval")"
 
   if [[ -z $interval_update ]]; then
     interval_update=0

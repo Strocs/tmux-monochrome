@@ -4,7 +4,7 @@ export LC_ALL=en_US.UTF-8
 
 label=$1
 
-current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+current_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source $current_dir/utils.sh
 
 get_synchronize_panes_status() {
@@ -12,10 +12,9 @@ get_synchronize_panes_status() {
   echo $current_synchronize_panes_status
 }
 
-main()
-{
+main() {
   # storing the refresh rate in the variable RATE, default is 5
-  RATE=$(get_tmux_option "@dracula-refresh-rate" 5)
+  RATE=$(get_tmux_option "@strocs-refresh-rate" 5)
   synchronize_panes_label=$label
   synchronize_panes_status=$(get_synchronize_panes_status)
   echo "$synchronize_panes_label $synchronize_panes_status"

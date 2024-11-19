@@ -3,13 +3,13 @@
 export LC_ALL=en_US.UTF-8
 
 # configuration
-# @dracula-continuum-mode default (countdown|time|alert|interval)
-# @dracula-continuum-time-threshold 15
+# @strocs-continuum-mode default (countdown|time|alert|interval)
+# @strocs-continuum-time-threshold 15
 
-alert_mode="@dracula-continuum-mode"
-time_threshold="@dracula-continuum-time-threshold"
+alert_mode="@strocs-continuum-mode"
+time_threshold="@strocs-continuum-time-threshold"
 warn_threshold=360
-first_save="@dracula-continuum-first-save"
+first_save="@strocs-continuum-first-save"
 
 # tmux-resurrect and tmux-continuum options
 if [ -d "$HOME/.tmux/resurrect" ]; then
@@ -35,33 +35,33 @@ file_mtime() {
     return
   fi
   case $(uname -s) in
-    Linux|Darwin)
-      date -r "$1" +%s
-      ;;
+  Linux | Darwin)
+    date -r "$1" +%s
+    ;;
 
-    FreeBSD)
-      stat -f %m "$1"
-      ;;
+  FreeBSD)
+    stat -f %m "$1"
+    ;;
 
-    CYGWIN*|MINGW32*|MSYS*|MINGW*)
-      # TODO - windows compatability
-      ;;
+  CYGWIN* | MINGW32* | MSYS* | MINGW*)
+    # TODO - windows compatability
+    ;;
   esac
 }
 
 timestamp_date() {
   case $(uname -s) in
-    Linux)
-      date -d "@$1" "$2"
-      ;;
+  Linux)
+    date -d "@$1" "$2"
+    ;;
 
-    Darwin|FreeBSD)
-      date -r "$1" "$2"
-      ;;
+  Darwin | FreeBSD)
+    date -r "$1" "$2"
+    ;;
 
-    CYGWIN*|MINGW32*|MSYS*|MINGW*)
-      # TODO - windows compatability
-      ;;
+  CYGWIN* | MINGW32* | MSYS* | MINGW*)
+    # TODO - windows compatability
+    ;;
   esac
 }
 
@@ -135,21 +135,21 @@ print_status() {
       status="saved"
     else
       case "$mode" in
-        countdown)
-          status="T$(printf '%+d' "$((time_delta_minutes - save_int))")min";
-          ;;
+      countdown)
+        status="T$(printf '%+d' "$((time_delta_minutes - save_int))")min"
+        ;;
 
-        time)
-          status="$time_delta_minutes";
-          ;;
+      time)
+        status="$time_delta_minutes"
+        ;;
 
-        alert)
-          status=""
-          ;;
+      alert)
+        status=""
+        ;;
 
-        interval)
-          status="$save_int"
-          ;;
+      interval)
+        status="$save_int"
+        ;;
       esac
     fi
   else

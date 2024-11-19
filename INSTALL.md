@@ -4,7 +4,7 @@
 
 If you are a tpm user, you can install the theme and keep up to date by adding the following to your .tmux.conf file:
 
-	set -g @plugin 'dracula/tmux'
+	set -g @plugin 'strocs/tmux'
 
 Add any configuration options below this line in your tmux config.
 
@@ -21,11 +21,11 @@ programs.tmux = {
 		sensible
 		yank
 		{
-			plugin = dracula;
+			plugin = strocs;
 			extraConfig = ''
-				set -g @dracula-show-battery false
-				set -g @dracula-show-powerline true
-				set -g @dracula-refresh-rate 10
+				set -g @strocs-show-battery false
+				set -g @strocs-show-powerline true
+				set -g @strocs-refresh-rate 10
 			'';
 		}
 	];
@@ -44,20 +44,20 @@ programs.tmux = {
 
 #### Configuration
 
-To enable plugins set up the `@dracula-plugins` option in your `.tmux.conf` file, separate plugin by space.
+To enable plugins set up the `@strocs-plugins` option in your `.tmux.conf` file, separate plugin by space.
 The order that you define the plugins will be the order on the status bar left to right.
 
 ```bash
 # available plugins: battery, cpu-usage, git, gpu-usage, ram-usage, tmux-ram-usage, network, network-bandwidth, network-ping, ssh-session, attached-clients, network-vpn, weather, time, mpc, spotify-tui, krbtgt, playerctl, kubernetes-context, synchronize-panes
-set -g @dracula-plugins "cpu-usage gpu-usage ram-usage"
+set -g @strocs-plugins "cpu-usage gpu-usage ram-usage"
 ```
 
 For each plugin is possible to customize background and foreground colors
 
 ```bash
 # available colors: white, gray, dark_gray, light_purple, dark_purple, cyan, green, orange, red, pink, yellow
-# set -g @dracula-[plugin-name]-colors "[background] [foreground]"
-set -g @dracula-cpu-usage-colors "pink dark_gray"
+# set -g @strocs-[plugin-name]-colors "[background] [foreground]"
+set -g @strocs-cpu-usage-colors "pink dark_gray"
 ```
 
 #### Status bar options
@@ -65,65 +65,65 @@ set -g @dracula-cpu-usage-colors "pink dark_gray"
 Enable powerline symbols
 
 ```bash
-set -g @dracula-show-powerline true
+set -g @strocs-show-powerline true
 ```
 
 Switch powerline symbols
 
 ```bash
 # for left
-set -g @dracula-show-left-sep 
+set -g @strocs-show-left-sep 
 
 # for right symbol (can set any symbol you like as separator)
-set -g @dracula-show-right-sep 
+set -g @strocs-show-right-sep 
 ```
 
 Enable window flags
 
 ```bash
-set -g @dracula-show-flags true
+set -g @strocs-show-flags true
 ```
 
 Adjust the refresh rate for the status bar
 
 ```bash
 # the default is 5, it can accept any number
-set -g @dracula-refresh-rate 5
+set -g @strocs-refresh-rate 5
 ```
 
 Switch the left smiley icon
 
 ```bash
 # it can accept `hostname` (full hostname), `session`, `shortname` (short name), `smiley`, `window`, or any character.
-set -g @dracula-show-left-icon session
+set -g @strocs-show-left-icon session
 ```
 
 Add padding to the left smiley icon
 
 ```bash
 # default is 1, it can accept any number and 0 disables padding.
-set -g @dracula-left-icon-padding 1
+set -g @strocs-left-icon-padding 1
 ```
 
 Enable high contrast pane border
 
 ```bash
-set -g @dracula-border-contrast true
+set -g @strocs-border-contrast true
 ```
 
 Hide empty plugins
 
 ```bash
-set -g @dracula-show-empty-plugins false
+set -g @strocs-show-empty-plugins false
 ```
 
 Make the powerline background transparent
 
 ```bash
-set -g @dracula-powerline-bg-transparent true
+set -g @strocs-powerline-bg-transparent true
 
 # the left separator symbol is inversed with a transparent background, you can modify it with any symbol you like
-set -g @dracula-inverse-divider 
+set -g @strocs-inverse-divider 
 ```
 
 #### [color theming](/docs/color_theming/README.md)
@@ -139,13 +139,13 @@ For everything regarding colors, please refer to [the color theming directory](/
 Customize label
 
 ```bash
-set -g @dracula-cpu-usage-label "CPU"
+set -g @strocs-cpu-usage-label "CPU"
 ```
 
 Show system load average instead of CPU usage percentage (default)
 
 ```bash
-set -g @dracula-cpu-display-load true
+set -g @strocs-cpu-display-load true
 ```
 
 CPU usage percentage (default) - in percentage (output: %)
@@ -156,7 +156,7 @@ Load average – is the average system load calculated over a given period of ti
 Customize label
 
 ```bash
-set -g @dracula-battery-label "Battery"
+set -g @strocs-battery-label "Battery"
 ```
 
 #### gpu-usage options
@@ -166,7 +166,7 @@ Note, currently only the Linux NVIDIA Proprietary drivers are supported. Nouveau
 Customize label
 
 ```bash
-set -g @dracula-gpu-usage-label "GPU"
+set -g @strocs-gpu-usage-label "GPU"
 ```
 
 #### ram-usage options
@@ -174,7 +174,7 @@ set -g @dracula-gpu-usage-label "GPU"
 Customize label
 
 ```bash
-set -g @dracula-ram-usage-label "RAM"
+set -g @strocs-ram-usage-label "RAM"
 ```
 
 #### tmux-ram-usage options
@@ -182,7 +182,7 @@ set -g @dracula-ram-usage-label "RAM"
 Customize label
 
 ```bash
-set -g @dracula-tmux-ram-usage-label "MEM"
+set -g @strocs-tmux-ram-usage-label "MEM"
 ```
 
 #### network-bandwidth
@@ -192,9 +192,9 @@ Displaying of the interface name, The interval between each bandwidth update.
 The most common interfaces name are `eth0` for a wired connection and `wlan0` for a wireless connection.
 
 ```bash
-set -g @dracula-network-bandwidth eth0
-set -g @dracula-network-bandwidth-interval 0
-set -g @dracula-network-bandwidth-show-interface true
+set -g @strocs-network-bandwidth eth0
+set -g @strocs-network-bandwidth-interval 0
+set -g @strocs-network-bandwidth-show-interface true
 ```
 
 #### network-ping options
@@ -202,15 +202,15 @@ set -g @dracula-network-bandwidth-show-interface true
 You can configure which server (hostname, IP) you want to ping and at which rate (in seconds). Default is google.com at every 5 seconds.
 
 ```bash
-set -g @dracula-ping-server "google.com"
-set -g @dracula-ping-rate 5
+set -g @strocs-ping-server "google.com"
+set -g @strocs-ping-rate 5
 ```
 ### ssh-session options
 
 Show SSH session port
 
 ```bash
-set -g @dracula-show-ssh-session-port true
+set -g @strocs-show-ssh-session-port true
 ```
 
 #### time options
@@ -218,24 +218,24 @@ set -g @dracula-show-ssh-session-port true
 Disable timezone
 
 ```bash
-set -g @dracula-show-timezone false
+set -g @strocs-show-timezone false
 ```
 
 Swap date to day/month
 
 ```bash
-set -g @dracula-day-month true
+set -g @strocs-day-month true
 ```
 
 Enable military time
 
 ```bash
-set -g @dracula-military-time true
+set -g @strocs-military-time true
 ```
 
 Set custom time format e.g (2023-01-01 14:00)
 ```bash
-set -g @dracula-time-format "%F %R"
+set -g @strocs-time-format "%F %R"
 ```
 See [[this page]](https://man7.org/linux/man-pages/man1/date.1.html) for other format symbols.
 
@@ -243,68 +243,68 @@ See [[this page]](https://man7.org/linux/man-pages/man1/date.1.html) for other f
 
 Hide details of git changes
 ```bash
-set -g @dracula-git-disable-status true
+set -g @strocs-git-disable-status true
 ```
 
 Set symbol to use for when branch is up to date with HEAD
 ```bash
 # default is ✓. Avoid using non unicode characters that bash uses like $, * and !
-set -g @dracula-git-show-current-symbol ✓
+set -g @strocs-git-show-current-symbol ✓
 ```
 
 Set symbol to use for when branch diverges from HEAD
 ```bash
 # default is unicode !. Avoid bash special characters
-set -g @dracula-git-show-diff-symbol !
+set -g @strocs-git-show-diff-symbol !
 ```
 
 Set symbol or message to use when the current pane has no git repo
 ```bash
 # default is unicode no message
-set -g @dracula-git-no-repo-message ""
+set -g @strocs-git-no-repo-message ""
 ```
 
 Hide untracked files from being displayed as local changes
 ```bash
 # default is false
-set -g @dracula-git-no-untracked-files true
+set -g @strocs-git-no-untracked-files true
 ```
 
 Show remote tracking branch together with diverge/sync state
 ```bash
 # default is false
-set -g @dracula-git-show-remote-status true
+set -g @strocs-git-show-remote-status true
 ```
 
 #### hg options
 
 Hide details of hg changes
 ```bash
-set -g @dracula-hg-disable-status true
+set -g @strocs-hg-disable-status true
 ```
 
 Set symbol to use for when branch is up to date with HEAD
 ```bash
 #default is ✓.Avoid using non unicode characters that bash uses like $, * and !
-set -g @dracula-hg-show-current-symbol ✓
+set -g @strocs-hg-show-current-symbol ✓
 ```
 
 Set symbol to use for when branch diverges from HEAD
 ```bash
 #default is unicode !.Avoid bash special characters
-set -g @dracula-hg-show-diff-symbol !
+set -g @strocs-hg-show-diff-symbol !
 ```
 
 Set symbol or message to use when the current pane has no hg repo
 ```bash
 #default is unicode no message
-set -g @dracula-hg-no-repo-message ""
+set -g @strocs-hg-no-repo-message ""
 ```
 
 Hide untracked files from being displayed as local changes
 ```bash
 #default is false
-set -g @dracula-hg-no-untracked-files false
+set -g @strocs-hg-no-untracked-files false
 ```
 
 #### weather options
@@ -312,19 +312,19 @@ set -g @dracula-hg-no-untracked-files false
 Switch from default fahrenheit to celsius
 
 ```bash
-set -g @dracula-show-fahrenheit false
+set -g @strocs-show-fahrenheit false
 ```
 
 Set your location manually
 
 ```bash
-set -g @dracula-fixed-location "Some City"
+set -g @strocs-fixed-location "Some City"
 ```
 
 Hide your location
 
 ```bash
-set -g @dracula-show-location false
+set -g @strocs-show-location false
 ```
 
 #### synchronize-panes options
@@ -332,21 +332,21 @@ set -g @dracula-show-location false
 Customize label
 
 ```bash
-set -g @dracula-synchronize-panes-label "Sync"
+set -g @strocs-synchronize-panes-label "Sync"
 ```
 #### attached-clients options
 
 Set the minimum number of clients to show (otherwise, show nothing)
 
 ```bash
-set -g @dracula-clients-minimum 1
+set -g @strocs-clients-minimum 1
 ```
 
 Set the label when there is one client, or more than one client
 
 ```bash
-set -g @dracula-clients-singular client
-set -g @dracula-clients-plural clients
+set -g @strocs-clients-singular client
+set -g @strocs-clients-plural clients
 ```
 
 #### Kubernetes options
@@ -354,25 +354,25 @@ set -g @dracula-clients-plural clients
 Add prefix label before the context
 
 ```bash
-set -g @dracula-kubernetes-context-label "Some Label"
+set -g @strocs-kubernetes-context-label "Some Label"
 ```
 
 Hide user from the context string
 
 ```
-set -g @dracula-kubernetes-hide-user true
+set -g @strocs-kubernetes-hide-user true
 ```
 
 Hide ARN (show only cluster name) - Available for EKS only (only available for cluster names that are ARNs)
 
 ```
-set -g @dracula-kubernetes-eks-hide-arn true
+set -g @strocs-kubernetes-eks-hide-arn true
 ```
 
 Extract the account as a prefix to the cluster name - Available for EKS only (only available for cluster names that are ARNs)
 
 ```
-set -g @dracula-kubernetes-eks-extract-account true
+set -g @strocs-kubernetes-eks-extract-account true
 ```
 
 ### Kerberos TGT options
@@ -380,7 +380,7 @@ set -g @dracula-kubernetes-eks-extract-account true
 Set the principal to check the TGT expiration date for (with or without the REALM)
 
 ```
-set -g @dracula-krbtgt-principal "principal"
+set -g @strocs-krbtgt-principal "principal"
 ```
 
 #### continuum options
@@ -392,13 +392,13 @@ Set the output mode. Options are:
 - **interval**: Show the continuum save interval
 
 ```bash
-set -g @dracula-continuum-mode countdown
+set -g @strocs-continuum-mode countdown
 ```
 
 Show if the last save was performed less than 60 seconds ago (default threshold is 15 seconds)
 
 ```bash
-set -g @dracula-continuum-time-threshold 60
+set -g @strocs-continuum-time-threshold 60
 ```
 
 #### Playerctl format
@@ -406,5 +406,5 @@ set -g @dracula-continuum-time-threshold 60
 Set the playerctl metadata format
 
 ```
-set -g @dracula-playerctl-format "►  {{ artist }} - {{ title }}"
+set -g @strocs-playerctl-format "►  {{ artist }} - {{ title }}"
 ```
