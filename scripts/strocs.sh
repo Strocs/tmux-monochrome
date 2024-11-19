@@ -29,7 +29,7 @@ main() {
   show_left_sep=$(get_tmux_option "@strocs-show-left-sep" )
   show_right_sep=$(get_tmux_option "@strocs-show-right-sep" )
   show_border_contrast=$(get_tmux_option "@strocs-border-contrast" false)
-  show_inverse_divider=$(get_tmux_option "@strocs-inverse-divider" )
+  show_inverse_divider=$(get_tmux_option "@strocs-inverse-divider" )
   show_day_month=$(get_tmux_option "@strocs-day-month" false)
   show_refresh=$(get_tmux_option "@strocs-refresh-rate" 5)
   show_synchronize_panes_label=$(get_tmux_option "@strocs-synchronize-panes-label" "Sync")
@@ -54,7 +54,7 @@ main() {
   red='#f85e84'
   purple='#ab9df2'
   yellow='#e5c463'
-  plugins_colors=(dark_0 dark_2)
+  plugins_colors=(dark_0 dark_1)
 
   # Override default colors and possibly add more
   colors="$(get_tmux_option "@strocs-colors" "")"
