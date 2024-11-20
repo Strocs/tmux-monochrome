@@ -15,13 +15,13 @@ main() {
   eks_extract_account=$(get_tmux_option "@strocs-kubernetes-eks-extract-account" false)
   hide_kubernetes_user=$(get_tmux_option "@strocs-kubernetes-hide-user" false)
   terraform_label=$(get_tmux_option "@strocs-terraform-label" "")
-  show_fahrenheit=$(get_tmux_option "@strocs-show-fahrenheit" true)
+  show_fahrenheit=$(get_tmux_option "@strocs-show-fahrenheit" false)
   show_location=$(get_tmux_option "@strocs-show-location" true)
   fixed_location=$(get_tmux_option "@strocs-fixed-location")
   show_powerline=$(get_tmux_option "@strocs-show-powerline" true)
   transparent_powerline_bg=$(get_tmux_option "@strocs-transparent-powerline-bg" true)
   show_flags=$(get_tmux_option "@strocs-show-flags" false)
-  show_left_icon=$(get_tmux_option "@strocs-show-left-icon" session)
+  show_left_icon=$(get_tmux_option "@strocs-show-left-icon" shortname)
   show_left_icon_padding=$(get_tmux_option "@strocs-left-icon-padding" 1)
   show_military=$(get_tmux_option "@strocs-military-time" false)
   timezone=$(get_tmux_option "@strocs-set-timezone" "")
@@ -48,11 +48,8 @@ main() {
   dark_3='#423f46'
   dark_4='#49464e'
   gray='#848089'
-  blue='#7accd7'
   green='#9ecd6f'
-  orange='#ef9062'
   red='#f85e84'
-  purple='#ab9df2'
   yellow='#e5c463'
   plugins_colors=(dark_0 dark_1)
 
@@ -65,14 +62,14 @@ main() {
   # Set transparency variables - Colors and window dividers
   if $transparent_powerline_bg; then
     bg_color="default"
-    window_sep_fg=${dark_3}
+    window_sep_fg=${dark_2}
     window_sep_bg=default
     window_sep="$show_inverse_divider"
   else
-    bg_color=${gray}
-    window_sep_fg=${gray}
-    window_sep_bg=${purple}
-    window_sep="$show_left_sep"
+    bg_color=${black}
+    window_sep_fg=${dark_2}
+    window_sep_bg=${black}
+    window_sep="$show_inverse_divider"
   fi
 
   # Handle left icon configuration
@@ -156,14 +153,14 @@ main() {
   tmux set-option -g pane-border-style "fg=${gray}"
 
   # message styling
-  tmux set-option -g message-style "bg=${gray},fg=${white}"
+  tmux set-option -g message-style "bg=${dark_0},fg=${white}"
 
   # status bar
   tmux set-option -g status-style "bg=${bg_color},fg=${white}"
 
   # Status left
   if $show_powerline; then
-    tmux set-option -g status-left "#[bg=${dark_0},fg=${white}]#{?client_prefix,#[bg=${dark_1}],} ${left_icon} #[fg=${dark_0},bg=${bg_color}]#{?client_prefix,#[fg=${dark_1}],}${left_sep}"
+    tmux set-option -g status-left "#[bg=${dark_0},fg=${white}]#{?client_prefix,#[fg=${yellow}],} ${left_icon} #[fg=${dark_0},bg=${bg_color}]#{?client_prefix,#[fg=${dark_0}],}${left_sep}"
     powerbg=${bg_color}
   else
     tmux set-option -g status-left "#[bg=${green},fg=${dark_0}]#{?client_prefix,#[bg=${yellow}],} ${left_icon}"
@@ -343,9 +340,9 @@ main() {
 
   # Window option
   if $show_powerline; then
-    tmux set-window-option -g window-status-current-format "#[fg=${window_sep_fg},bg=${window_sep_bg}]${window_sep}#[fg=${white},bg=${dark_3}] #I #W${current_flags} #[fg=${dark_3},bg=${bg_color}]${left_sep}"
+    tmux set-window-option -g window-status-current-format "#[fg=${window_sep_fg},bg=${window_sep_bg}]${window_sep}#[fg=${white},bg=${dark_2}] #I #W${current_flags} #[fg=${dark_2},bg=${bg_color}]${left_sep}"
   else
-    tmux set-window-option -g window-status-current-format "#[fg=${white},bg=${dark_3}] #I #W${current_flags} "
+    tmux set-window-option -g window-status-current-format "#[fg=${white},bg=${dark_2}] #I #W${current_flags} "
   fi
 
   tmux set-window-option -g window-status-format "#[fg=${white}]#[bg=${bg_color}] #I #W${flags}"
