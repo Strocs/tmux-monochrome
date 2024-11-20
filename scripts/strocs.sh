@@ -47,11 +47,11 @@ main() {
   dark_2='#3b383e'
   dark_3='#423f46'
   dark_4='#49464e'
-  gray='#848089'
+  gray='#a3a1af'
   green='#9ecd6f'
   red='#f85e84'
   yellow='#e5c463'
-  plugins_colors=(dark_0 dark_1)
+  plugins_colors=(dark_0 black)
 
   # Override default colors and possibly add more
   colors="$(get_tmux_option "@strocs-colors" "")"
