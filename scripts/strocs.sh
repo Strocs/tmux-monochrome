@@ -21,7 +21,7 @@ main() {
   show_powerline=$(get_tmux_option "@strocs-show-powerline" true)
   transparent_powerline_bg=$(get_tmux_option "@strocs-transparent-powerline-bg" true)
   show_flags=$(get_tmux_option "@strocs-show-flags" false)
-  show_left_icon=$(get_tmux_option "@strocs-show-left-icon" shortname)
+  show_left_icon=$(get_tmux_option "@strocs-show-left-icon" session)
   show_left_icon_padding=$(get_tmux_option "@strocs-left-icon-padding" 1)
   show_military=$(get_tmux_option "@strocs-military-time" false)
   timezone=$(get_tmux_option "@strocs-set-timezone" "")
